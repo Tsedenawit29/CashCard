@@ -1,15 +1,15 @@
+/* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px;
-    background-color: #f0f2f5;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f4f6f8; /* Light grey background */
+    color: #333;
+    line-height: 1.6;
 }
 
 .container {
-    max-width: 960px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 40px auto;
     padding: 20px;
 }
 
@@ -17,129 +17,435 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .family-header h1 {
-    font-size: 24px;
-    color: #333;
+    font-size: 28px;
+    color: #2c3e50; /* Dark blue-grey */
+    margin: 0;
 }
 
 .new-member-button {
-    background-color: #007bff;
+    background-color: #3498db; /* Blue */
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
+.new-member-button:hover {
+    background-color: #2980b9;
+}
+
+/* Card Grid Layout */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
+/* Cash Card Styles */
 .cash-card {
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cash-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cash-card:hover .member-name {
+    color: #007bff; /* Example hover color */
+}
+
+.cash-card:hover .balance {
+    color: #198754; /* Example hover color */
 }
 
 .card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .member-name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
+    margin: 0;
+    transition: color 0.2s ease-in-out;
 }
 
 .balance {
-    font-size: 20px;
-    color: #28a745;
+    font-size: 24px;
+    color: #27ae60; /* Green */
+    font-weight: bold;
+    margin: 0;
+    transition: color 0.2s ease-in-out;
 }
 
 .card-bottom {
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card-type {
     font-size: 14px;
-    color: #6c757d;
+    color: #777;
+    margin: 0;
 }
 
 .edit-member {
-    background-color: #f8f9fa;
-    color: #007bff;
-    border: 1px solid #007bff;
-    padding: 8px 12px;
-    border-radius: 5px;
+    background-color: #f39c12; /* Orange */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    align-self: flex-start;
-    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
+.edit-member:hover {
+    background-color: #e67e22;
+}
+
+/* Modal Styles */
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 80%;
+    max-width: 500px; /* Adjust max-width for better card appearance */
+    display: none; /* Initially hide the modal */
+}
+.modal h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
 }
 
-.add-member-form {
+/* Add Member Form & Edit Member Form (Shared Styles within Modal) */
+.add-edit-form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
+}
+
+.add-edit-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.add-edit-form .form-group input[type="text"],
+.add-edit-form .form-group input[type="number"] {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    max-width: 300px; /* Limit input width */
+}
+
+.add-edit-form .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.add-edit-form .save-button,
+.add-edit-form .cancel-button {
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.add-edit-form .save-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+}
+
+.add-edit-form .save-button:hover {
+    background-color: #0056b3;
+}
+
+.add-edit-form .cancel-button {
+    background-color: #6c757d; /* Grey */
+    color: white;
+    border: none;
+}
+
+.add-edit-form .cancel-button:hover {
+    background-color: #545b62;
+}
+
+/* Add Multiple Members Form (within the main view) */
+.add-multiple-members-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.add-multiple-members-card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.add-multiple-members-form .members-list {
+    margin-bottom: 20px;
+}
+
+.add-multiple-members-form .form-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    color: #777;
+}
+
+.add-multiple-members-form .member-input {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.add-multiple-members-form .member-input input[type="text"],
+.add-multiple-members-form .member-input input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.add-multiple-members-form .amount-input {
+    display: flex;
+    align-items: center;
+}
+
+.add-multiple-members-form .amount-input input[type="number"] {
+    margin-left: 5px;
+}
+
+.add-multiple-members-form .add-member-button {
+    background-color: #27ae60; /* Green */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.add-multiple-members-form .form-navigation {
+    display: flex;
+    justify-content: flex-end;
     gap: 10px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input[type="text"],
-.form-group input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.submit-button, .cancel-button {
-    padding: 10px 15px;
+.add-multiple-members-form .continue-button {
+    background-color: #3498db; /* Blue */
+    color: white;
+    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
 }
 
-.submit-button {
-    background-color: #28a745;
-    color: white;
+/* Edit Page Specific Styles */
+.edit-container {
+    max-width: 800px;
 }
 
-.cancel-button {
+.edit-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 1.2em;
+    margin-right: 15px;
+}
+
+.edit-header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.edit-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.edit-form-section {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 300px; /* Limit form width */
+}
+
+.edit-form-section .form-group {
+    margin-bottom: 20px;
+}
+
+.edit-form-section .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.edit-form-section .form-group input[type="text"],
+.edit-form-section .form-group input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.edit-form-section .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.edit-form-section .save-button,
+.edit-form-section .cancel-button {
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.edit-form-section .save-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+}
+
+.edit-form-section .save-button:hover {
+    background-color: #0056b3;
+}
+
+.edit-form-section .cancel-button {
+    background-color: #6c757d; /* Grey */
+    color: white;
+    border: none;
+}
+
+.edit-form-section .cancel-button:hover {
+    background-color: #545b62;
+}
+
+.card-preview-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align card to the left */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-preview-section .preview {
+    width: 300px; /* Adjust preview card size */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 150px; /* Ensure some height */
+}
+
+.card-preview-section .preview .card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.card-preview-section .preview .member-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card-preview-section .preview .card-type {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.card-preview-section .delete-button {
+    background-color: #ffe3e0; /* Light red background */
+    color: #dc3545; /* Red text */
+    border: 1px solid #dc3545;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.card-preview-section .delete-button:hover {
     background-color: #dc3545;
     color: white;
+    border-color: #c82333;
 }

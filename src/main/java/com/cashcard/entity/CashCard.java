@@ -78,4 +78,18 @@ public class CashCard {
     public void setParentName(String parentName) {
         this.parentName = parentName;
     }
+
+    // Remove the incorrect setBalance(Double aDouble) method
+
+    @Override
+    public String toString() {
+        return "CashCard{" +
+                "id=" + id +
+                ", kidName='" + kidName + '\'' +
+                ", balance=" + balance +
+                ", issueDate=" + issueDate +
+                ", expiryDate=" + expiryDate +
+                ", parentName='" + parentName + '\'' +
+                '}';
+    }
 }
