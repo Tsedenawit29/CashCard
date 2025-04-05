@@ -1,4 +1,5 @@
-package com.cashcard.CashCard.entity;
+package com.cashcard.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
